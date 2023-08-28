@@ -19,26 +19,26 @@ import 'dart:math';
 
     final propertiesToSell = List.generate(
         25, (i) => Property(
-        state: "Sell",
-        type : Random().nextInt(2)>1 ?  "Appartement" : "House",
-        superficy: (i*250/Random().nextInt(10)+1).round(),
-        roomNumber: (i*10/Random().nextInt(10)+1).round(),
-        price: (i*25000/Random().nextInt(10)+1).round()
+        state: (Random().nextInt(10).round())>=5 ? "Sell" : "Loan",
+        type : (Random().nextInt(10).round())>=5 ? "Appartement" : "House",
+        superficy: (i*250/(Random().nextInt(10)+1).round()).round(),
+        roomNumber: (i*10/(Random().nextInt(10)+1).round()).round(),
+        price: (i*25000/(Random().nextInt(10)+1).round()).round()
 
     ));
 
     final propertiesToLoan = List.generate(
         25, (i) => Property(
         state: "Loan",
-        type : "House",
-        superficy: (i*250/(Random().nextInt(10)+1)).round(),
-        roomNumber: (i*10/(Random().nextInt(10)+1)).round(),
-        price: (i*25000/(Random().nextInt(10)+1)).round()
+        type : (Random().nextInt(10).round())>=5 ?  "Appartement" : "House",
+        superficy: (i*250/(Random().nextInt(10)+1).round()).round(),
+        roomNumber: (i*10/(Random().nextInt(10)+1).round()).round(),
+        price: (i*25000/(Random().nextInt(10)+1).round()).round()
 
     ));
 
 
-    return [...propertiesToSell, ...propertiesToLoan];
+    return [...propertiesToSell];
   }
 
   final defaultProperties = _createProperty();
