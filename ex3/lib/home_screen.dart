@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'form_note.dart';
 import 'note_row.dart';
 import 'note.dart';
 
@@ -45,7 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     })
             ),
-
+            SizedBox(
+              height: 200,
+              child: FormNote(
+                addNote: (note) => setState(() => _notes.add(note)),
+              ),
+            )
           ],
         ),
       ),
