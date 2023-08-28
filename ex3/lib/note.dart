@@ -13,3 +13,15 @@ class Note {
   int get hashCode => title.hashCode;
 }
 
+
+List<Note> _createNotes() {
+  final notes = List.generate(
+    100,
+      (i) => Note(title: "$i : titre", text: "$i : text")
+  );
+
+  return [...notes];
+}
+
+final defaultNotes = _createNotes();
+
