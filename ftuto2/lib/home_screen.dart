@@ -6,28 +6,44 @@ import 'package:flutter/material.dart';
 import 'contact_row.dart';
 import 'contact.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+
+  var showFavorites = false;
+  void _toggleFavorites() => setState( () => showFavorites = !showFavorites);
   @override
   Widget build(BuildContext context) {
-    final contactRows = defaultContacts
-        .map((contact) => ContactRow(contact:contact))
-        .toList();
+
+    final displayedContacts = [
+      for (var contact in defaultContacts)
+        if (!showFavorites || contact.isFavorite) contact
+    ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Contact List")),
+      appBar: AppBar(
+          title: const Text("Contact List"),
+          actions: [
+            IconButton(
+              icon: Icon(showFavorites ? Icons.star : Icons.star_border),
+              onPressed: _toggleFavorites,
+            ),
+          ],
+      ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: SizedBox(
             width: 512.0,
             child: ListView.builder(
-                itemCount: defaultContacts.length,
+                itemCount: displayedContacts.length,
                 itemBuilder: (context, index) {
-                  log("index: $index");
-                  return ContactRow(contact: defaultContacts[index]);
+                  return ContactRow(contact: displayedContacts[index]);
                 }
 
             )
