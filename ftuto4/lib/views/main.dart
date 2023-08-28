@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ftuto4/first_screen.dart';
-import 'package:ftuto4/second_screen.dart';
+import 'package:ftuto4/views/first_screen.dart';
+import 'package:ftuto4/views/second_screen.dart';
 
 void main() {
   runApp(const MyApp());
