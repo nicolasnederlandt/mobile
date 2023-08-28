@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'laureate.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,16 +22,12 @@ class MyApp extends StatelessWidget {
           ),
           body: ListView(
             children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  color: Colors.blueAccent,
-                  child: Text(laureate1["motivation"]!),
-                ),
-              Text(
-                laureate1["firstname"]! + laureate1["surname"]!
-
+              Laureate(
+                laureate1["motivation"]!,
+                firstname: laureate1["firstname"] ?? "",
+                surname: laureate1["surname"] ?? "",
               )
-            ]
+            ],
           )
         )
       );
