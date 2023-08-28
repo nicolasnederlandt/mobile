@@ -13,13 +13,19 @@ class Laureate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        
         Container(
+          padding: const EdgeInsets.all(20),
           margin: const EdgeInsets.only(top: 20),
           color: Colors.blueAccent,
-          child: Text(motivation),
+
+
+          child: Text(motivation, style: const TextStyle(color: Colors.white), textAlign: TextAlign.center),
         ),
         Text(
-          "$firstname $surname"
+
+          "$firstname $surname",
+
 
         )
       ]

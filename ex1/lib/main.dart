@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
         title: 'Flutter ex1',
         home: Scaffold(
           appBar: AppBar(
-            title: const Text('View a Nobel Prize'),
+            centerTitle: true,
+            backgroundColor: Colors.lightBlueAccent,
+
+            title: const Text('View a Nobel Prize', style: const TextStyle(color: Colors.white),),
           ),
           body: ListView(
             children: [
