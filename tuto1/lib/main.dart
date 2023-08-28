@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuto1/my_oeschinen_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -85,9 +86,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
-        ),
         body: ListView(
           children: [
             Image.asset(
@@ -99,6 +97,7 @@ class MyApp extends StatelessWidget {
             titleSection,
             buttonSection,
             textSection,
+            const MyOeschinenCard()
           ],
         ),
       ),
