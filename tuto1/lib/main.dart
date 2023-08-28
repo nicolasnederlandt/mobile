@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuto1/my_card.dart';
 import 'package:tuto1/my_oeschinen_card.dart';
 
 void main() {
@@ -97,7 +98,14 @@ class MyApp extends StatelessWidget {
             titleSection,
             buttonSection,
             textSection,
-            const MyOeschinenCard()
+            const MyOeschinenCard(),
+            const MyCard(title1: "Title 1"),
+            const MyCard(
+              imageUri: "images/lake.jpg",
+              title1: "Oeschingen Lake Camping",
+              title2: "CH",
+              description: "Wow.. Nowhere is better than this...",
+            ),
           ],
         ),
       ),
