@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ftuto3/my_square.dart';
 import 'package:ftuto3/my_switch.dart';
 
+import 'my_form.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -29,6 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: color,
                 setColor: (value) => setState( () => color = value)
             ),
+            MyForm(
+                (value) => setState( () => color = value),
+            )
           ],
         ),
       )
