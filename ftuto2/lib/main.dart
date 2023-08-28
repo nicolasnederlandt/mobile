@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ftuto2/home_screen.dart';
 
 import 'contact.dart';
 import 'contact_row.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomeScreen()
     );
   }
 }
