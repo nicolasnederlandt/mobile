@@ -26,7 +26,7 @@ class ListScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {}, // TODO F06 go to create screen
+        onPressed: () => Navigator.pushNamed(context, "/form"),
         child: const Icon(Icons.add),
       ),
       body: Padding(
@@ -50,7 +50,7 @@ class ListScreen extends StatelessWidget {
                         ),
                         title: Text(article.title),
                         subtitle: Text(article.author),
-                        onTap: () {}, // TODO F06 go to article
+                        onTap: () => Navigator.pushNamed(context, "/article", arguments: article),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {}, // TODO F07 delete article
