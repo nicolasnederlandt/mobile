@@ -1,44 +1,44 @@
+import 'package:ex4/view_model/article_view_model.dart';
 import 'package:flutter/material.dart';
-
-import '../model/article.dart';
+import 'package:provider/provider.dart';
 
 class ListScreen extends StatelessWidget {
   const ListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var showRead = false; // TODO F07 get state from view model
-    var articles = [
-      for (var article in defaultArticles)
-        if (showRead || !article.read) article
-    ]; // TODO F07 get state from view model
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Articles"),
-        actions: [
-          IconButton(
-            icon: showRead
-                ? const Icon(Icons.check_box)
-                : const Icon(Icons.check_box_outline_blank),
-            onPressed: () {}, // TODO F07 show/hide read articles
-          ),
-          IconButton(icon: const Icon(Icons.abc), onPressed: () {}),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, "/form"),
-        child: const Icon(Icons.add),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: articles.isEmpty
-            ? const Center(
+
+    return Consumer<ArticleViewModel>(
+      builder: (context, viewModel, child) =>
+          Scaffold(
+            appBar: AppBar(
+              title: const Text("Articles"),
+              actions: [
+                IconButton(
+                  icon: viewModel.displayRead
+                      ? const Icon(Icons.check_box)
+                      : const Icon(Icons.check_box_outline_blank),
+                  onPressed: () {
+                    viewModel.switchDisplayRead();
+                  }
+                ),
+                IconButton(icon: const Icon(Icons.abc), onPressed: () {}),
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => Navigator.pushNamed(context, "/form"),
+              child: const Icon(Icons.add),
+            ),
+            body: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: viewModel.articles.isEmpty
+                  ? const Center(
                 child: Text("There are no articles yet. Create one!"),
               )
-            : ListView.builder(
-                itemCount: articles.length,
+                  : ListView.builder(
+                itemCount: viewModel.articles.length,
                 itemBuilder: (context, index) {
-                  var article = articles[index];
+                  var article = viewModel.articles[index];
                   return Column(
                     children: [
                       ListTile(
@@ -46,14 +46,18 @@ class ListScreen extends StatelessWidget {
                           icon: article.read
                               ? const Icon(Icons.check_box)
                               : const Icon(Icons.check_box_outline_blank),
-                          onPressed: () {}, // TODO F07 mark as read
+                          onPressed: () {
+                            viewModel.switchRead(article.id);
+                          },
                         ),
                         title: Text(article.title),
                         subtitle: Text(article.author),
-                        onTap: () => Navigator.pushNamed(context, "/article", arguments: article),
+                        onTap: () => Navigator.pushNamed(context, "/article", arguments: article.id),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
-                          onPressed: () {}, // TODO F07 delete article
+                          onPressed: () {
+                            viewModel.deleteArticle(article.id);
+                          }
                         ),
                       ),
                       const Divider(),
@@ -61,7 +65,8 @@ class ListScreen extends StatelessWidget {
                   );
                 },
               ),
-      ),
+            ),
+          )
     );
   }
 }

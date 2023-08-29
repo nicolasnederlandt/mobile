@@ -1,4 +1,6 @@
+import 'package:ex4/view_model/article_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../model/article.dart';
 
@@ -8,9 +10,11 @@ class ArticleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final currentArticle = ModalRoute.of(context)!.settings.arguments as Article;
+    final idArticle = ModalRoute.of(context)!.settings.arguments as int;
 
+    final viewModel = Provider.of<ArticleViewModel>( context, listen:false);
 
+    final currentArticle = viewModel.getById(idArticle);
 
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +28,9 @@ class ArticleScreen extends StatelessWidget {
         child: currentArticle.read
             ? const Icon(Icons.check_box)
             : const Icon(Icons.check_box_outline_blank),
-        onPressed: () {}, // TODO F07 mark as read
+        onPressed: () {
+          viewModel.switchRead(idArticle);
+        }
       ),
       body: Padding(
         padding: const EdgeInsets.all(32),
