@@ -30,6 +30,9 @@
       <excludeFolder url="file://$MODULE_DIR$/ex4/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ex4/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ex4/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ftuto5/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ftuto5/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ftuto5/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
