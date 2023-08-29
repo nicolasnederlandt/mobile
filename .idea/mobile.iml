@@ -36,6 +36,9 @@
       <excludeFolder url="file://$MODULE_DIR$/exo5/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/exo5/build" />
       <excludeFolder url="file://$MODULE_DIR$/exo5/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ftuto6/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ftuto6/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ftuto6/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
