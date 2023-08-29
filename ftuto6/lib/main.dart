@@ -61,7 +61,7 @@ class MyHomeScreenState extends State<MyHomeScreen> {
         title: const Text('FutureBuilder Example'),
       ),
       body: FutureBuilder<List<dynamic>>(
-        future: _fetchData(),
+        future: Future.delayed(const Duration(seconds: 3), () => _fetchData()),
         builder: (context, snapshot) {
           if(snapshot.hasData) {
             return ListView.builder(
