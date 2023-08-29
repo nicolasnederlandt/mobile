@@ -16,14 +16,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   var state = FetchState.loading;
   var message = "Loading...";
-  Film? film;
+  final List<Film> films = [];
 
   Future<void> _initFilm() async {
     try {
-      var response = await Film.fetchFilm(2);
+      var response = await Film.fetchFilms();
       setState( () {
         state = FetchState.done;
-        film = response;
+        films.addAll(response);
       });
     } catch (error) {
       setState( () {
@@ -46,11 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: state != FetchState.done
-          ? Column( children: [ Center( child: Text(message),)])
-          : FilmRow(film: film!),
-        ),
-      );
+          ? Column(
+            children: [
+              Expanded(
+                child: Center( child: Text(message)))])
+                : ListView.separated(
+                  itemBuilder: (context, index)
+                    => FilmRow(film: films[index]),
+                  separatorBuilder: (context, index)
+                    => const Divider(),
+                  itemCount: films.length)
 
+      ),
+    );
   }
 }
 class FilmRow extends StatelessWidget {
