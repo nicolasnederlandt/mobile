@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
+
+import 'location_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,6 +37,27 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Text("Hello from $platform!"),
+              const SizedBox(height: 16),
+              if(["Web", "Android", "iOS"].contains(platform))
+                ElevatedButton(
+                    onPressed: () async {
+                      await sendSMS(
+                        message: "Test SMS",
+                        recipients: ["0456555321"]
+                      );
+                    },
+                    child: const Text("Sens SMS"),
+                )
+              else
+                const Text("Your platform doesnt allow you to sens SMS..."),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) => const LocationDialog(),
+                ),
+                child: const Text("Retrieve location"),
+              ),
             ],
           )
         )
